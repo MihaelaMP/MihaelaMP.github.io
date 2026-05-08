@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobby — Margareta Mihaela Pesterau</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #1a4a6b;
+      --border: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 28px;
+      margin-bottom: 56px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 0.65;
+    }
+
+    /* HERO */
+
+    .hero {
+      margin-bottom: 60px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* PHOTO GRID */
+
+    .photo-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .photo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-info {
+      padding: 22px 24px;
+    }
+
+    .photo-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .photo-info p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* PLACEHOLDER */
+
+    .placeholder {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, #dce8f3 0%, #eef3f8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+
+      body {
+        padding: 28px 18px 60px;
+      }
+
+      .photo-card img,
+      .placeholder {
+        height: 220px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Progetti</a>
+    <a href="hobby.html">Hobby</a>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <h1>Photography</h1>
+
+    <p>
+      La fotografia per me è un modo di osservare dettagli, luce e relazioni tra gli elementi —
+      lo stesso approccio che porto nell’analisi dei dati.
+    </p>
+  </section>
+
+  <!-- PHOTO GRID -->
+
+  <section class="photo-grid">
+
+    <!-- FOTO 1 -->
+
+    <div class="photo-card">
+
+      <!-- Inserisci qui la tua immagine -->
+      <img src="images/daisies-sea.jpg" alt="Margherite sulla spiaggia">
+
+      <!-- Placeholder se non hai ancora copiato l'immagine -->
+      <!--
+      <div class="placeholder">
+        Carica images/daisies-sea.jpg
+      </div>
+      -->
+
+      <div class="photo-info">
+        <h2>Daisies by the Sea</h2>
+        <p>Adriatic Coast · Spring 2024</p>
+      </div>
+    </div>
+
+    <!-- FOTO 2 -->
+
+    <div class="photo-card">
+
+      <div class="placeholder">
+        Future photo
+      </div>
+
+      <div class="photo-info">
+        <h2>Quiet Light</h2>
+        <p>A place, a detail, a moment.</p>
+      </div>
+    </div>
+
+    <!-- FOTO 3 -->
+
+    <div class="photo-card">
+
+      <div class="placeholder">
+        Future photo
+      </div>
+
+      <div class="photo-info">
+        <h2>Lines & Geometry</h2>
+        <p>Urban details and visual balance.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>
+      <a href="https://github.com/MihaelaMP" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/margareta-mihaela-pesterau-computer-engineer/" target="_blank">
+        LinkedIn
+      </a>
+    </p>
+  </footer>
+
+</body>
+</html>
