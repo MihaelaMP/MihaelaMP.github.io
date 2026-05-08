@@ -3,75 +3,390 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Margareta Mihaela Pesterau</title>
+  <title>Margareta Mihaela Pesterau — Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #1a4a6b;
+      --accent-light: #e8f0f7;
+      --border: #e0e0e0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 40px;
-      line-height: 1.6;
-      background-color: #f7f7f7;
-      color: #222;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      background-color: var(--bg);
+      color: var(--text);
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      line-height: 1.7;
     }
 
-    h1 {
-      font-size: 42px;
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 28px;
+      margin-bottom: 56px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
     }
 
-    h2 {
-      margin-top: 40px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 20px;
-    }
-
-    a {
-      color: #0066cc;
+    nav a {
       text-decoration: none;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s;
     }
+
+    nav a:hover { opacity: 0.65; }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .hero-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-light);
+      flex-shrink: 0;
+    }
+
+    /* Placeholder foto — rimuovi questo div quando carichi la foto */
+    .hero-photo-placeholder {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-align: center;
+      flex-shrink: 0;
+      border: 3px solid var(--border);
+      padding: 8px;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 500px;
+    }
+
+    @media (max-width: 560px) {
+      .hero { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    /* PROJECT CARDS GRID */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 620px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    .project-mini {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-mini:hover {
+      box-shadow: 0 6px 24px rgba(26,74,107,0.10);
+      transform: translateY(-2px);
+    }
+
+    .project-mini-img {
+      width: 100%;
+      height: 110px;
+      object-fit: contain;
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Placeholder immagine progetto */
+    .project-mini-img-placeholder {
+      width: 100%;
+      height: 110px;
+      background: linear-gradient(135deg, #dce8f3 0%, #eef3f8 100%);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .project-mini-body {
+      padding: 14px 16px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .project-mini-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .project-mini-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .projects-cta {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .projects-cta:hover { border-color: var(--accent); }
+
+    /* CARD generica */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+
+    /* ARTICLE */
+    .article-inner {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 560px) {
+      .article-inner { flex-direction: column; }
+    }
+
+    .article-img {
+      width: 140px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    /* Placeholder articolo */
+    .article-img-placeholder {
+      width: 140px;
+      height: 100px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-align: center;
+      padding: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .article-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .article-text p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .article-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .article-link:hover { border-color: var(--accent); }
+
+    /* HOBBIES */
+    .hobby-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
-
 <body>
 
-  <h1>Margareta Mihaela Pesterau</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Progetti</a>
+    <a href="hobby.html">Hobby</a>
+  </nav>
 
-  <p>
-   Ingegnere Informatico, Data Analyst.Appassionata di dati , di ciò che raccontano e delle decisioni che possono guidare -- su tematiche sociali come nel contesto aziendale.
-  </p>
+  <!-- HERO -->
+  <section class="hero">
 
-  <div class="card">
-    <h2>Projects</h2>
-    <a href="projects.html">Vedi tutti i progetti</a>
-    <p>
-      My GitHub portfolio:
-      <a href="https://github.com/MihaelaMP" target="_blank">
-        github.com/MihaelaMP
+    <!-- Quando hai la foto: rimuovi il div placeholder e decommenta il tag img -->
+    <div class="hero-photo-placeholder">Carica images/foto.jpg</div>
+    <!-- <img src="images/foto.jpg" alt="Margareta Mihaela Pesterau" class="hero-photo"> -->
+
+    <div class="hero-text">
+      <h1>Margareta Mihaela Pesterau</h1>
+      <p>Ingegnere Informatico, Data Analyst. Appassionata di dati, di ciò che raccontano e delle decisioni che possono guidare — su tematiche sociali come nel contesto aziendale.</p>
+    </div>
+  </section>
+
+  <!-- PROGETTI -->
+  <section class="card">
+    <h2 class="section-title">Progetti</h2>
+
+    <div class="projects-grid">
+
+      <!-- Card progetto 1 -->
+      <a class="project-mini" href="projects.html">
+        <!-- Quando hai l'immagine: <img src="images/progetto1.png" alt="Progetto 1" class="project-mini-img"> -->
+        <div class="project-mini-img-placeholder">Progetto 1</div>
+        <div class="project-mini-body">
+          <span class="project-mini-tag">Python · ISTAT</span>
+          <span class="project-mini-title">Disoccupazione femminile e maternità</span>
+        </div>
       </a>
-    </p>
-  </div>
 
-  <div class="card">
-    <h2>Articles</h2>
+      <!-- Card progetto 2 -->
+      <a class="project-mini" href="projects.html">
+        <div class="project-mini-img-placeholder">Progetto 2</div>
+        <div class="project-mini-body">
+          <span class="project-mini-tag">Power BI · Eurostat</span>
+          <span class="project-mini-title">Motherhood Penalty in Italia</span>
+        </div>
+      </a>
 
+      <!-- Card progetto 3 -->
+      <a class="project-mini" href="projects.html">
+        <div class="project-mini-img-placeholder">Progetto 3</div>
+        <div class="project-mini-body">
+          <span class="project-mini-tag">Power BI · ISTAT</span>
+          <span class="project-mini-title">Inattività femminile e cura familiare</span>
+        </div>
+      </a>
+
+    </div>
+
+    <a class="projects-cta" href="projects.html">Vedi tutti i progetti →</a>
+  </section>
+
+  <!-- ARTICOLI -->
+  <section class="card">
+    <h2 class="section-title">Articoli</h2>
+
+    <div class="article-inner">
+
+      <!-- Quando hai l'immagine: <img src="images/articolo.jpg" alt="Articolo LinkedIn" class="article-img"> -->
+      <div class="article-img-placeholder">Carica images/articolo.jpg</div>
+
+      <div class="article-text">
+        <h3>Divario di genere nel lavoro: evidenze da dati ISTAT ed Eurostat su figli e responsabilità familiari</h3>
+        <p>Un'analisi che mette insieme tre progetti di portfolio per raccontare, con i dati, come la maternità e la cura familiare influenzano l'occupazione femminile in Italia.</p>
+        <a class="article-link" href="https://www.linkedin.com/pulse/divario-di-genere-nel-lavoro-evidenze-da-dati-istat-ed-pesterau" target="_blank">Leggi su LinkedIn →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOBBY -->
+  <section class="card">
+    <h2 class="section-title">Hobby</h2>
+    <p class="hobby-text">Lettura, apprendimento continuo, creatività — e la fotografia, che per me è un modo di osservare il mondo con attenzione.</p>
+    <a class="projects-cta" href="hobby.html">Vedi le mie foto →</a>
+  </section>
+
+  <footer>
     <p>
-      Here I will share my thoughts, articles and learning journey.
+      <a href="https://github.com/MihaelaMP" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/margareta-mihaela-pesterau-computer-engineer/" target="_blank">LinkedIn</a>
     </p>
-  </div>
-
-  <div class="card">
-    <h2>Hobbies</h2>
-
-    <p>
-      Reading, learning, creativity and building a better future.
-    </p>
-  </div>
+  </footer>
 
 </body>
 </html>
+
