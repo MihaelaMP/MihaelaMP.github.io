@@ -1,1 +1,365 @@
 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progetti — Margareta Mihaela Pesterau</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #1a4a6b;
+      --accent-light: #e8f0f7;
+      --tag-bg: #f0f4f8;
+      --border: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      background-color: var(--bg);
+      color: var(--text);
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 56px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 0.65; }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    /* HEADER */
+    .page-header {
+      margin-bottom: 52px;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* PROJECT CARD */
+    .project-card {
+      background: var(--card);
+      border-radius: 14px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 8px 32px rgba(26,74,107,0.10);
+      transform: translateY(-2px);
+    }
+
+    /* IMAGE */
+    .project-image {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: var(--accent-light);
+    }
+
+    .project-image-placeholder {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(135deg, #dce8f3 0%, #eef3f8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* CARD BODY */
+    .project-body {
+      padding: 28px 32px 32px;
+    }
+
+    .project-number {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    /* THREE-SECTION GRID */
+    .project-insights {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .project-insights { grid-template-columns: 1fr; }
+    }
+
+    .insight-block {
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+    }
+
+    .insight-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .insight-text {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    /* TAGS */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    /* LINK */
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .project-link:hover { border-color: var(--accent); }
+
+    .project-link svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Margareta Mihaela Pesterau</span>
+    <div style="display:flex;gap:28px;">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Progetti</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>I miei progetti</h1>
+    <p>Analisi dati su tematiche sociali e di genere, con dataset pubblici ISTAT ed Eurostat. Tutti i progetti sono disponibili su GitHub.</p>
+  </header>
+
+  <!-- PROGETTO 1 -->
+  <article class="project-card">
+    <!-- Sostituisci il blocco sotto con: <img src="images/progetto1.png" alt="Grafico progetto 1" class="project-image"> -->
+    <div class="project-image-placeholder">Inserisci screenshot — images/progetto1.png</div>
+
+    <div class="project-body">
+      <div class="project-number">Progetto 01 · Python</div>
+      <h2 class="project-title">Disoccupazione femminile e maternità in Italia</h2>
+
+      <div class="project-insights">
+        <div class="insight-block">
+          <div class="insight-label">Cosa cercavo di capire</div>
+          <div class="insight-text">Se e quanto avere figli influenza il tasso di disoccupazione delle donne rispetto agli uomini in Italia.</div>
+        </div>
+        <div class="insight-block">
+          <div class="insight-label">Cosa ho analizzato</div>
+          <div class="insight-text">Dati ISTAT sull'occupazione femminile e maschile, suddivisi per numero di figli.</div>
+        </div>
+        <div class="insight-block">
+          <div class="insight-label">Cosa ho dedotto</div>
+          <div class="insight-text">Avere figli aumenta significativamente il rischio di disoccupazione per le donne, mentre per gli uomini l'effetto è minimo o nullo.</div>
+        </div>
+      </div>
+
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">ISTAT</span>
+      </div>
+
+      <a class="project-link" href="https://github.com/MihaelaMP/analisi-disoccupazione-genitori" target="_blank">
+        Vedi su GitHub
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+  </article>
+
+  <!-- PROGETTO 2 -->
+  <article class="project-card">
+    <div class="project-image-placeholder">Inserisci screenshot — images/progetto2.png</div>
+
+    <div class="project-body">
+      <div class="project-number">Progetto 02 · Power BI</div>
+      <h2 class="project-title">Motherhood Penalty — occupazione femminile per numero di figli</h2>
+
+      <div class="project-insights">
+        <div class="insight-block">
+          <div class="insight-label">Cosa cercavo di capire</div>
+          <div class="insight-text">Come cambia il tasso di occupazione femminile in Italia al crescere del numero di figli, nel corso del tempo.</div>
+        </div>
+        <div class="insight-block">
+          <div class="insight-label">Cosa ho analizzato</div>
+          <div class="insight-text">Dati Eurostat (2006–2024) sul tasso di occupazione delle donne per numero di figli, con misura DAX del gender gap.</div>
+        </div>
+        <div class="insight-block">
+          <div class="insight-label">Cosa ho dedotto</div>
+          <div class="insight-text">Il tasso di occupazione femminile cala all'aumentare dei figli. Il divario con gli uomini si amplia e resta strutturale nel tempo.</div>
+        </div>
+      </div>
+
+      <div class="project-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">DAX</span>
+        <span class="tag">Power Query</span>
+        <span class="tag">Eurostat</span>
+      </div>
+
+      <a class="project-link" href="https://github.com/MihaelaMP/motherhood-penalty-powerbi" target="_blank">
+        Vedi su GitHub
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+  </article>
+
+  <!-- PROGETTO 3 -->
+  <article class="project-card">
+    <div class="project-image-placeholder">Inserisci screenshot — images/progetto3.png</div>
+
+    <div class="project-body">
+      <div class="project-number">Progetto 03 · Power BI</div>
+      <h2 class="project-title">Inattività femminile e responsabilità di cura in Italia</h2>
+
+      <div class="project-insights">
+        <div class="insight-block">
+          <div class="insight-label">Cosa cercavo di capire</div>
+          <div class="insight-text">In che misura l'inattività femminile in Italia è legata alle responsabilità di cura familiare.</div>
+        </div>
+        <div class="insight-block">
+          <div class="insight-label">Cosa ho analizzato</div>
+          <div class="insight-text">Dati ISTAT 2024–2025 sull'inattività delle donne per motivi familiari, confrontati con i dati maschili.</div>
+        </div>
+        <div class="insight-block">
+          <div class="insight-label">Cosa ho dedotto</div>
+          <div class="insight-text">Le responsabilità di cura ricadono in modo sproporzionato sulle donne, spingendole fuori dal mercato del lavoro.</div>
+        </div>
+      </div>
+
+      <div class="project-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">DAX</span>
+        <span class="tag">Power Query</span>
+        <span class="tag">ISTAT</span>
+      </div>
+
+      <a class="project-link" href="https://github.com/MihaelaMP/gender-gap-caregiver-Italy" target="_blank">
+        Vedi su GitHub
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+  </article>
+
+  <footer>
+    <p><a href="index.html">← Torna alla home</a> &nbsp;·&nbsp; <a href="https://github.com/MihaelaMP" target="_blank">GitHub</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/margareta-mihaela-pesterau-computer-engineer/" target="_blank">LinkedIn</a></p>
+  </footer>
+
+</body>
+</html>
